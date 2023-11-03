@@ -12,6 +12,6 @@ The builds in this repository are only for v9 of the TL-WR841N(D) with 16MB SPI/
 - **Warning! Settings can NOT be kept because of the switch from *ar71xx* to *ath79*. Keeping the settings will lead to a boot loop and a recovery method will be necessary**
 
 ## Information
-These packages have been compiled to save you some time. They were compiled with default settings and the luci web interface. Please note that the binaries have been tested, but there is **no warranty**. You are installing these packages at your own risk!
+These packages have been compiled to save you some time. They were compiled with default settings plus the luci web interface. Please note that the binaries have been tested, but there is **no warranty**. You are installing these packages at your own risk!
 
 OpenWRT License can be found [here](https://github.com/openwrt/openwrt/blob/main/COPYING).

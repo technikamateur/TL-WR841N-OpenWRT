@@ -13,11 +13,20 @@ The builds in this repository are only for v9 of the TL-WR841N(D) with 16MB SPI/
 - **Warning for users comming from 18.06 (latest official release):** Settings can **NOT** be kept because of the switch from *ar71xx* to *ath79*. Keeping the settings will lead to a boot loop and a recovery method will be necessary
 
 ## Information
-These packages were compiled to save you some time. Build system config can be found in `diffconfig`. Basically it's just the minimal base system + luci.
+These packages were compiled to save you some time. Build system config can be found in `diffconfig`. Basically it's the following:
+- OpenWRT tiny ath79 target
+- LuCI web interface
+- Support for `ed25519` ssh keys
+- [Quad9](https://quad9.net/) as default DNS resolver - this can be changed in settings!
 
 Please note that the binaries have been tested, but there is **no warranty**. You are installing these packages at your own risk!
 
 OpenWRT License can be found [here](https://github.com/openwrt/openwrt/blob/main/COPYING).
+
+## Change DNS Server
+If you want to change to a different DNS forwarder, just got to `Network`->`DHCP and DNS`->`Forwards` and paste your own DNS servers.
+
+If you want to use the DNS server advertised by WAN, got to `Network`->`DHCP and DNS`->`Forwards` and remove all DNS entries. Afterward switch to `Resolv & Hosts Files` and remove the tick from `Ignore resolv file`.
 
 ## Wireguard benchmarks
 For all who are interested in running wireguard on this old Router, here are some results from this [awesome wg bench script](https://github.com/cyyself/wg-bench):

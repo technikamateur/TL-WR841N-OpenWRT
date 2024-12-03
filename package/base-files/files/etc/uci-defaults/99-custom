@@ -1,0 +1,9 @@
+uci set dhcp.@dnsmasq[0].noresolv="1"
+uci -q delete dhcp.@dnsmasq[0].server
+uci add_list dhcp.@dnsmasq[0].server="9.9.9.9"
+uci add_list dhcp.@dnsmasq[0].server="149.112.112.112"
+uci add_list dhcp.@dnsmasq[0].server="2620:fe::fe"
+uci add_list dhcp.@dnsmasq[0].server="2620:fe::9"
+uci set dhcp.@dnsmasq[0].domain="lan"
+uci set dhcp.@dnsmasq[0].local="/lan/"
+uci commit dhcp

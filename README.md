@@ -1,35 +1,55 @@
-# TL-WR841N-OpenWRT
-The builds in this repository are only for v9 of the TL-WR841N(D) with 16MB SPI/64MB RAM. Builds for other versions will possibly be added.
+# OpenWRT Builds for TP-Link TL-WR841N/ND (16MB/64MB) 🚀
+
+This repository contains pre-built OpenWRT images for the TP-Link TL-WR841N/ND router with 16MB SPI flash and 64MB RAM.
+
+## Supported Hardware Versions
+
+This project supports the following hardware versions of the TL-WR841N/ND:
+
+* v9
+* v10
+* v11
+* v12
 
 ## Installation
+
 ### Prerequisites
-- You have upgraded your wr841n with 64MB RAM and 16MB SPI with a guide [like this](https://wiki.freifunk.net/TP-Link_WR841ND/Flash_und_RAM_erweitern_bis_v12)
-- You have installed the [latest official version](https://openwrt.org/toh/tp-link/tl-wr841nd) 18.06 of OpenWRT **OR** a previous OpenWRT release from this repo
-  
-### Steps
-- Download the latest release from [Releases](https://github.com/technikamateur/TP-Link-WR841N-OpenWRT/releases)
-- Its recommend to verify the download with the provided checksum
-- Go to your router web interface and upload the sysupgrade binary
-- **Warning for users comming from 18.06 (latest official release):** Settings can **NOT** be kept because of the switch from *ar71xx* to *ath79*. Keeping the settings will lead to a boot loop and a recovery method will be necessary
 
-## Information
-These packages were compiled to save you some time. Build system config can be found in `diffconfig`. Basically it's the following:
-- OpenWRT tiny ath79 target
-- LuCI web interface
-- Support for `ed25519` ssh keys
-- [Quad9](https://quad9.net/) as default DNS resolver - this can be changed in settings!
+Before installing these builds, ensure you have:
 
-Please note that the binaries have been tested, but there is **no warranty**. You are installing these packages at your own risk!
+1. **Upgraded your WR841N/ND's RAM and Flash:** You should have upgraded your router to 64MB RAM and 16MB SPI flash. A guide like [this one](https://wiki.freifunk.net/TP-Link_WR841ND/Flash_und_RAM_erweitern_bis_v12) can help.
+2. **Installed a Base OpenWRT Release:** You must have either the [latest official OpenWRT 18.06 release](https://openwrt.org/toh/tp-link/tl-wr841nd) **OR** a previous OpenWRT release from this repository already installed.
 
-OpenWRT License can be found [here](https://github.com/openwrt/openwrt/blob/main/COPYING).
+### Installation Steps
 
-## Change DNS Server
-If you want to change to a different DNS forwarder, just got to `Network`->`DHCP and DNS`->`Forwards` and paste your own DNS servers.
+1. **Download the Latest Release:** Download the latest pre-built OpenWRT image from the [Releases](https://github.com/technikamateur/TP-Link-WR841N-OpenWRT/releases) page
+2. **Verify the Checksum (Recommended):**  It's highly recommended to verify the integrity of the downloaded image using the provided checksum
+3. **Flash the Image:** Access your router's web interface (LuCI) and upload the downloaded sysupgrade binary
+4. **Important Notice for 18.06 Users:**  If you're upgrading from the official OpenWRT 18.06 release, **you CANNOT keep your settings.**  This is due to a change in the target architecture from *ar71xx* to *ath79*. Attempting to keep settings will result in a boot loop, requiring a recovery process. Back up your settings if needed, but be prepared to configure from scratch.
 
-If you want to use the DNS server advertised by WAN, got to `Network`->`DHCP and DNS`->`Forwards` and remove all DNS entries. Afterward switch to `Resolv & Hosts Files` and remove the tick from `Ignore resolv file`.
+## Key Features & Information
 
-## Wireguard benchmarks
-For all who are interested in running wireguard on this old Router, here are some results from this [awesome wg bench script](https://github.com/cyyself/wg-bench):
+These OpenWRT images are compiled to save you time and effort. The build configuration can be found in the `diffconfig` file. Basically it's the following:
+
+* OpenWRT *ath79/tiny* target
+* LuCI Web Interface
+* Support for `ed25519` SSH keys
+* Pre-configured with [Quad9](https://quad9.net/) DNS servers for enhanced privacy and security
+
+**Disclaimer:** While these binaries are tested, they are provided **without any warranty**. Installation and use are at your own risk.
+
+The OpenWRT license can be found [here](https://github.com/openwrt/openwrt/blob/main/COPYING).
+
+## Changing the DNS Server
+
+To change the default DNS server:
+
+1. **Static DNS:** Navigate to `Network` -> `DHCP and DNS` -> `Forwards` and enter your preferred DNS server addresses.
+2. **Use WAN DNS:** To use the DNS server provided by your ISP via WAN, go to `Network` -> `DHCP and DNS` -> `Forwards` and remove all existing DNS entries. Then, go to `Resolv and Hosts Files` and uncheck the `Ignore resolv file` option.
+
+## WireGuard Performance Benchmarks
+
+For users interested in running WireGuard on this router, here are some benchmark results using the excellent [wg-bench script](https://github.com/cyyself/wg-bench):
 
 ```sh
 Routers details:
